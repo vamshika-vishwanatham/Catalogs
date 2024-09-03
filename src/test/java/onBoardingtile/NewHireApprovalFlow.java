@@ -17,7 +17,7 @@ public class NewHireApprovalFlow extends BaseClass{
 	WebElement administrator;
 	@FindBy(xpath="//div[@id='system-admin-menu-content']/div/ul/li[10]")
 	WebElement scriptRunner;
-	@FindBy(css=".sr-rs__value-container.css-1ftf48x")
+	@FindBy(xpath="//*[@class='sr-rs__control css-b4cy4q-control']")
 	WebElement selectUser;
 	@FindBy(xpath="//button[@data-cy='execute-button']/span")
 	WebElement runProfile;
@@ -35,7 +35,9 @@ public class NewHireApprovalFlow extends BaseClass{
 		currentUrl = driver.getCurrentUrl();
 		administrator.click();
 		scriptRunner.click();
+		Thread.sleep(1000);
 		searchScripts.sendKeys("Switch to a different user");
+		Thread.sleep(2000);
 		switchUser.click();
 		Thread.sleep(3000);
 		switchUserUrl = driver.getCurrentUrl();

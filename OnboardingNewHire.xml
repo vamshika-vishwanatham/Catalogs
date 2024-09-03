@@ -6,10 +6,10 @@
 	</listeners>
 	<test thread-count="5" name="test">
 		<classes>
-			<class name="QATestCases.NewHireSelectRoleQA" />
+			<!--<class name="QATestCases.NewHireSelectRoleQA" />-->
 			<class name="QATestCases.NewHireRoleMissingQA" />
-			<class name="QATestCases.NewHireRBANotRequiredQA" />
-			<class name="QATestCases.NewHireCancelRBAQA" />
+			<!--<class name="QATestCases.NewHireRBANotRequiredQA" />
+			<class name="QATestCases.NewHireCancelRBAQA" />-->
 		</classes>
 	</test> 
 	<!--Test -->

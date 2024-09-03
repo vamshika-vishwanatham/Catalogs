@@ -5,19 +5,19 @@ import java.util.ResourceBundle;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import utilities.GenericMethods;
+
 public class LoginPageComponent extends BaseClass {
 
 
+	
 	public ResourceBundle rb=ResourceBundle.getBundle("QALogin");
 	
 	@FindBy(xpath="//input[@name ='identifier']")
 	WebElement emailId;
+	//WebElement emailIds = driver.findElement(By.xpath(rb.getString("emailId")));
 	@FindBy(xpath="//input[@name='credentials.passcode']")
 	WebElement passcode;
-	@FindBy(xpath="//label[@for='input43']")
-	WebElement keepMeSignedin;
-	@FindBy(xpath="//div[@id='rememberme']/label") //login-form-remember-me
-	WebElement rememberMyLogin;
 	@FindBy(xpath="//input[@value='Sign in']")
 	WebElement signIn;
 	@FindBy(xpath="//input[@value='Receive a code via SMS']")
@@ -28,11 +28,7 @@ public class LoginPageComponent extends BaseClass {
 	WebElement verify; 
 	@FindBy(xpath="//div[@role='alert']/p")
 	WebElement errorMessage;
-	@FindBy(xpath="//input[@id='login-form-remember-me']")
-	WebElement termsConditions;
-	@FindBy(xpath="//button[@class='close terms-btn accept']")
-	WebElement Accept;
-	
+	GenericMethods generic = new GenericMethods();
 	
 	public void goTo() throws InterruptedException {
 		
@@ -41,46 +37,29 @@ public class LoginPageComponent extends BaseClass {
 	}
 	
 	public void loginApplication() throws InterruptedException {
-		
-		emailId.sendKeys(rb.getString("email"));
-		passcode.sendKeys(rb.getString("password"));
-		//Thread.sleep(2000);
-		//rememberMyLogin.click();
-		signIn.click();
+		generic.enterEmail(emailId);
+		generic.enterPassword(passcode);
+		generic.clickToSignIn(signIn);
 		Thread.sleep(5000);
-		codeViaSMS.click();
-		otpVerification();
-		
-	}
-	
-public void loginSBApplication() throws InterruptedException {
-		
-		emailId.sendKeys(rb.getString("email"));
-		passcode.sendKeys(rb.getString("password"));
-		//Thread.sleep(2000);
-		//termsConditions.click();
-		//Accept.click();
-		signIn.click();
-		Thread.sleep(5000);
-		codeViaSMS.click();
-		otpVerification();
-		
-	}
-	
-	public void otpVerification() throws InterruptedException {
-		
-		enterCode.click();
+		generic.clickElement(codeViaSMS);
+		generic.clickElement(enterCode);
 		Thread.sleep(15000);
-		verify.click();
+		generic.clickElement(verify);
 		System.out.println("**************logged in**************");
 		
-		
+		/*
+		 * emailId.sendKeys(rb.getString("email"));
+		 * passcode.sendKeys(rb.getString("password")); signIn.click();
+		 * Thread.sleep(5000); codeViaSMS.click(); otpVerification(enterCode,verify);
+		 * System.out.println("**************logged in**************");
+		 */
 	}
+	
+	
 
 
 	public String loginErrorMessage() throws InterruptedException {
 		Thread.sleep(5000);
 		return errorMessage.getText();
-		
 		}
 }

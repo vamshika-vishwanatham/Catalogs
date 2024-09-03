@@ -31,7 +31,7 @@ public class NewHireRoleMissingQA extends BaseClass{
 	@Test(priority = 3)
 	public void NewHireTicketCreation() throws InterruptedException {
 		NewHireTicketCreation NHTC = new NewHireTicketCreation();
-		NHTC.formSubmittion(); 
+		NHTC.fillFormAndSubmit(); 
 		Thread.sleep(30000);
 		ITView();
 		windowHandle();
