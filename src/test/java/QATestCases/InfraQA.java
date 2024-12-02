@@ -24,7 +24,7 @@ public class InfraQA extends BaseClass{
 		LoginPageComponent loginPage = new LoginPageComponent();
 		
 		loginPage.goTo();
-		loginPage.loginSBApplication();
+		loginPage.loginApplication();
 		
 		SelectCatalogComponent catalog = new SelectCatalogComponent();
 		catalog.serviceDeskPortal();

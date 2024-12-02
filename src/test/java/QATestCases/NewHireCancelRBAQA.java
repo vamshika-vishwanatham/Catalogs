@@ -32,8 +32,8 @@ public class NewHireCancelRBAQA extends BaseClass {
 	@Test(priority = 3)
 	public void NewHireTicketCreation() throws InterruptedException {
 		NewHireTicketCreation NHTC = new NewHireTicketCreation();
-		NHTC.formSubmittion(); 
-		Thread.sleep(30000);
+		NHTC.fillFormAndSubmit(); 
+		Thread.sleep(20000);
 		ITView();
 		windowHandle();
 		Thread.sleep(10000);
